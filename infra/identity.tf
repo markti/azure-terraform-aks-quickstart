@@ -19,3 +19,23 @@ resource "azurerm_role_assignment" "contributor" {
   principal_id         = azurerm_user_assigned_identity.main.principal_id
 
 }
+
+resource "azurerm_key_vault_access_policy" "kubelet_user" {
+
+  key_vault_id = azurerm_key_vault.main.id
+
+  tenant_id    = data.azurerm_client_config.current.tenant_id
+  object_id    = azurerm_user_assigned_identity.main.principal_id
+
+  certificate_permissions = [
+    "Get", "List"
+  ]
+
+  key_permissions = [
+    "Get", "List"
+  ]
+
+  secret_permissions = [
+    "Get", "List"
+  ]
+}
