@@ -3,3 +3,7 @@
 **/.terraform**
 **/**.tfstate*
 **/kube-config.yaml
+**/.DS_Store
+**/bin/*
+**/obj/*
+**/.vs/*
