@@ -18,7 +18,8 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: ACR Login
-      run: echo $ACR |
+      run: |
+        echo "$ACR"
         docker login $ACR_URI --username $ARM_CLIENT_ID --password $ARM_CLIENT_SECRET
       env:
         ACR_URI: ${{ secrets.ACR_REGISTRY }}
