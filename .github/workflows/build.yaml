@@ -22,7 +22,6 @@ jobs:
         login-server: ${{ secrets.ACR_REGISTRY }}
         username: ${{ secrets.ACR_USERNAME }}
         password: ${{ secrets.ACR_PASSWORD }}
-        
-      - run: |
-          docker build . -t ${{ secrets.ACR_REGISTRY }}/appdb:${{ github.sha }}
-          docker push ${{ secrets.ACR_REGISTRY }}/appdb:${{ github.sha }}
+    - run: |
+        docker build . -t ${{ secrets.ACR_REGISTRY }}/appdb:${{ github.sha }}
+        docker push ${{ secrets.ACR_REGISTRY }}/appdb:${{ github.sha }}
