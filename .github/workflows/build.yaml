@@ -1,3 +1,7 @@
+defaults:
+  run:
+    working-directory: api/user-api
+
 name: Build
 on:
   push:
