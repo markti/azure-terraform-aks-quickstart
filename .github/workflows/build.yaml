@@ -17,14 +17,5 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
     - uses: actions/checkout@v3
-    - name: Setup .NET Core
-      uses: actions/setup-dotnet@v3
-      with:
-        dotnet-version: '7.0.x'
-        dotnet-quality: 'preview'
-    - name: Install dependencies
-      run: dotnet restore
-    - name: Build
-      run: dotnet build --configuration Release --no-restore
     - name: Build Docker Image
-      run: dotnet publish --os linux --arch x64 /t:PublishContainer -c Release
+      run: docker build . -t user-api
