@@ -23,5 +23,5 @@ jobs:
         username: ${{ secrets.ACR_USERNAME }}
         password: ${{ secrets.ACR_PASSWORD }}
     - run: |
-        docker build . -t ${{ secrets.ACR_REGISTRY }}/user-api:${{ github.sha }}
-        docker push ${{ secrets.ACR_REGISTRY }}/user-api:${{ github.sha }}
+        docker build . -t ${{ secrets.ACR_REGISTRY }}/snap:user-api:v2
+        docker push ${{ secrets.ACR_REGISTRY }}/snap:user-api:v2
