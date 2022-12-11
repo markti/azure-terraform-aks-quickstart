@@ -1,6 +1,6 @@
 defaults:
   run:
-    working-directory: api/user-api
+    working-directory: api/user-api/Snap.User.API
 
 name: Build
 on:
