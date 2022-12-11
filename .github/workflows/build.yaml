@@ -25,3 +25,11 @@ jobs:
     - run: |
         docker build . -t ${{ secrets.ACR_REGISTRY }}/snap-user-api:v1
         docker push ${{ secrets.ACR_REGISTRY }}/snap-user-api:v1
+    - run: |
+        helm registry login $ACR_NAME.azurecr.io \
+          --username $USER_NAME \
+          --password $PASSWORD
+      env:
+        ACR_NAME: ${{ secrets.ACR_REGISTRY }}
+        USER_NAME: ${{ secrets.ACR_USERNAME }}
+        PASSWORD: ${{ secrets.ACR_PASSWORD }}
