@@ -17,5 +17,15 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
     - uses: actions/checkout@v3
+    - name: ACR Login
+      run: |
+        echo "$ACR_URI"
+        docker login $ACR_URI --username $ARM_CLIENT_ID --password $ARM_CLIENT_SECRET
+      env:
+        ACR_URI: ${{ secrets.ACR_REGISTRY }}
+        ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
+        ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
     - name: Build Docker Image
-      run: docker build . -t user-api
+      run: docker build --tag snap/user-api:v1 . -t user-api
+    - name: Docker Push
+      run: docker push ${{ secrets.ACR_REGISTRY }}/snap/user-api:v1
