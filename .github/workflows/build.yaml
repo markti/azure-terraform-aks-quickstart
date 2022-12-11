@@ -20,6 +20,6 @@ jobs:
     - name: ACR Login
       run: docker login $ACR_REGISTRY
     - name: Build Docker Image
-      run: docker build . -t user-api
+      run: docker build --tag snap/user-api:v1 . -t user-api
     - name: Docker Push
-      run: docker push $ACR_REGISTRY/$ACR_NAMESPACE/$ACR_IMAGE_NAME:$ACR_IMAGE_TAG
+      run: docker push $ACR_REGISTRY/snap/user-api:v1
