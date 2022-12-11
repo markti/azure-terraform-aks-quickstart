@@ -27,4 +27,4 @@ jobs:
     - name: Build
       run: dotnet build --configuration Release --no-restore
     - name: Build Docker Image
-      run: dotnet publish user-api --os linux --arch x64 /t:PublishContainer -c Release
+      run: dotnet publish --os linux --arch x64 /t:PublishContainer -c Release
