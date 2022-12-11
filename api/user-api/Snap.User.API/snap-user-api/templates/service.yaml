@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "user-api.fullname" . }}
+  name: {{ include "snap-user-api.fullname" . }}
   labels:
-    {{- include "user-api.labels" . | nindent 4 }}
+    {{- include "snap-user-api.labels" . | nindent 4 }}
 spec:
   type: {{ .Values.service.type }}
   ports:
@@ -12,4 +12,4 @@ spec:
       protocol: TCP
       name: http
   selector:
-    {{- include "user-api.selectorLabels" . | nindent 4 }}
+    {{- include "snap-user-api.selectorLabels" . | nindent 4 }}
