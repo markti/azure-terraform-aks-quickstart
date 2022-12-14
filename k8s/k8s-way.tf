@@ -1,9 +1,28 @@
-resource "kubernetes_deployment" "user_api" {
 
-  count = 1
+resource "kubernetes_service" "user_api" {
 
   metadata {
-    name = "snap-user-api"
+    name      = "snap-user-api"
+    namespace = kubernetes_namespace.main.metadata.0.name
+  }
+  spec {
+    selector = {
+      app = kubernetes_deployment.user_api.metadata.0.labels.app
+    }
+    port {
+      port        = 8080
+      target_port = 80
+    }
+
+    type = "LoadBalancer"
+  }
+}
+
+resource "kubernetes_deployment" "user_api" {
+
+  metadata {
+    name      = "snap-user-api"
+    namespace = kubernetes_namespace.main.metadata.0.name
     labels = {
       app = "snap-user-api"
     }
@@ -27,7 +46,7 @@ resource "kubernetes_deployment" "user_api" {
 
       spec {
         container {
-          image = "crb0e6jh.azurecr.io/snap-user-api:v1"
+          image = "crvf33u4.azurecr.io/snap-user-api:v1"
           name  = "snap-user-api"
 
           resources {
@@ -40,23 +59,6 @@ resource "kubernetes_deployment" "user_api" {
               memory = "50Mi"
             }
           }
-
-/*
-          liveness_probe {
-            http_get {
-              path = "/WeatherForecast"
-              port = 80
-
-              http_header {
-                name  = "X-Custom-Header"
-                value = "Awesome"
-              }
-            }
-
-            initial_delay_seconds = 3
-            period_seconds        = 3
-          }
-          */
         }
       }
     }

@@ -14,3 +14,16 @@ Run the Container
 
 Call the API on the local container:
 `curl localhost:8080/WeatherForecast`
+
+
+## Infra
+
+Destroy start: 8:09
+Destroy end: 8:15
+
+Apply start: 8:41
+Apply end: 8:47 (minus ssh secret)
+
+To get kubectl / k9s working
+`cp ./kube-config.yaml ~/.kube/config`
+

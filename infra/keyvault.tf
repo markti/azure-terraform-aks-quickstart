@@ -67,4 +67,8 @@ resource "azurerm_key_vault_secret" "secret_sauce" {
   name         = "secret-sauce"
   value        = "szechuan"
   key_vault_id = azurerm_key_vault.main.id
+
+  depends_on = [
+    azurerm_key_vault_access_policy.terraform_user
+  ]
 }

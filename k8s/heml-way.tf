@@ -1,5 +1,5 @@
 
-
+/*
 resource "helm_release" "kubewatch" {
 
   count = 0
@@ -17,3 +17,4 @@ resource "helm_release" "kubewatch" {
     value = "foo"
   }
 }
+*/

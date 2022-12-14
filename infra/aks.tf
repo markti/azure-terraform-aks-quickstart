@@ -46,3 +46,27 @@ resource "local_file" "kube_config" {
   content = azurerm_kubernetes_cluster.main.kube_config_raw
   filename = "${path.module}/kube-config.yaml"
 }
+
+
+module aks_monitor {
+
+  source = "github.com/markti/terraform-azurerm-diagnostic-setting//modules/rando?ref=v1.0.2"
+
+  resource_id                = azurerm_kubernetes_cluster.main.id
+  log_analytics_workspace_id = azurerm_log_analytics_workspace.main.id
+  retention_period           = 30
+
+  logs = [
+    "kube-apiserver",
+    "kube-audit",
+    "kube-audit-admin",
+    "kube-controller-manager",
+    "kube-scheduler",
+    "cluster-autoscaler",
+    "cloud-controller-manager",
+    "guard",
+    "csi-azuredisk-controller",
+    "csi-azurefile-controller",
+    "csi-snapshot-controller"
+  ]
+}

@@ -19,4 +19,8 @@ resource "azurerm_key_vault_secret" "ssh_private" {
   name         = "ssh-private"
   value        = trimspace(tls_private_key.ssh.private_key_pem)
 
+  depends_on = [
+    azurerm_key_vault_access_policy.terraform_user
+  ]
+
 }
