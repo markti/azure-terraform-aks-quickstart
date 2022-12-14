@@ -34,6 +34,7 @@ jobs:
         echo $ | helm registry login ${{ secrets.ACR_REGISTRY }} --username ${{ secrets.ACR_USERNAME }} --password ${{ secrets.ACR_PASSWORD }}
     - name: save helm chart to local registry
       run: |
+        helm version
         helm chart save /api/user-api/Snap.User.API/snap-user-api ${{ secrets.ACR_REGISTRY }}/v1
     - name: publish chart to acr
       run: |
