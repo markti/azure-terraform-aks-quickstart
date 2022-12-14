@@ -39,3 +39,10 @@ resource "azurerm_key_vault_access_policy" "kubelet_user" {
     "Get", "List"
   ]
 }
+
+resource "azurerm_role_assignment" "aks_acr_access" {
+  principal_id                     = azurerm_user_assigned_identity.main.principal_id
+  role_definition_name             = "AcrPull"
+  scope                            = azurerm_container_registry.main.id
+  skip_service_principal_aad_check = true
+}

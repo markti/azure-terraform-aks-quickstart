@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: snap-user-api
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: snap-user-api
+  template:
+    metadata:
+      labels:
+        app: snap-user-api
+    spec:
+      containers:
+      - name: snap-user-api
+        image: crb0e6jh.azurecr.io/snap-user-api:v1
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80
