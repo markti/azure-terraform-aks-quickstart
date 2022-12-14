@@ -46,7 +46,7 @@ resource "kubernetes_deployment" "user_api" {
 
       spec {
         container {
-          image = "crvf33u4.azurecr.io/snap-user-api:v1"
+          image = "${var.registry_name}/snap-user-api:${var.image_version}"
           name  = "snap-user-api"
 
           resources {
