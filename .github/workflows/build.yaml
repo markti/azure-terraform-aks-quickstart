@@ -39,4 +39,4 @@ jobs:
 
     - name: publish chart to acr
       run: |
-        helm chart push oci://${{ secrets.ACR_REGISTRY }}/helm
+        helm push ./snap-user-api-0.1.0.tgz oci://${{ secrets.ACR_REGISTRY }}/helm
