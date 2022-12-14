@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ .Values.deployment.name }}
+  namespace: {{ .Values.deployment.namespace }}
 spec:
   replicas: {{ .Values.deployment.replicas }}
   selector:
@@ -14,7 +15,7 @@ spec:
     spec:
       containers:
       - name: {{ .Values.deployment.name }}
-        image: 
+        image: {{ .Values.deployment.image }}
         resources:
           limits:
             memory: "128Mi"

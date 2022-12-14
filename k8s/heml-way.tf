@@ -2,19 +2,13 @@
 /*
 resource "helm_release" "kubewatch" {
 
-  count = 0
-  
-  name       = "kubewatch"
-  repository = "https://charts.bitnami.com/bitnami"
-  chart      = "kubewatch"
+  name       = "snap-user-api"
+  repository = "https://github.com/markti/azure-terraform-aks-quickstart/tree/main/api/user-api/Snap.User.API/snap-user-api"
+  chart      = "snap-user-api"
 
   values = [
-    file("${path.module}/kubewatch-values.yaml")
+    file("${path.module}/helm-values.yaml")
   ]
 
-  set_sensitive {
-    name  = "slack.token"
-    value = "foo"
-  }
 }
 */

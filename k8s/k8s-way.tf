@@ -1,4 +1,4 @@
-
+/*
 resource "kubernetes_service" "user_api" {
 
   metadata {
@@ -64,3 +64,4 @@ resource "kubernetes_deployment" "user_api" {
     }
   }
 }
+*/
